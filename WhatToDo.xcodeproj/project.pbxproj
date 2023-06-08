@@ -26,6 +26,7 @@
 		6E2C57372A31BBB3005C8DAB /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E2C57362A31BBB3005C8DAB /* LoginView.swift */; };
 		6E2C57392A31CA7D005C8DAB /* AppleLoginButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E2C57382A31CA7D005C8DAB /* AppleLoginButton.swift */; };
 		6E2C573B2A31CCAD005C8DAB /* LoginHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E2C573A2A31CCAD005C8DAB /* LoginHeaderView.swift */; };
+		6E2C573E2A31CF5D005C8DAB /* AppleService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E2C573D2A31CF5D005C8DAB /* AppleService.swift */; };
 		9A1669F92955FE7BADAAD0F0 /* Pods_WhatToDo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 88FAAE78B74F1771E0640C25 /* Pods_WhatToDo.framework */; };
 		BFFD8B7CC7992C87A52D2CB9 /* Pods_WhatToDoTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4A21259FD74F9F41578592C0 /* Pods_WhatToDoTests.framework */; };
 /* End PBXBuildFile section */
@@ -74,6 +75,7 @@
 		6E2C57362A31BBB3005C8DAB /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
 		6E2C57382A31CA7D005C8DAB /* AppleLoginButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppleLoginButton.swift; sourceTree = "<group>"; };
 		6E2C573A2A31CCAD005C8DAB /* LoginHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginHeaderView.swift; sourceTree = "<group>"; };
+		6E2C573D2A31CF5D005C8DAB /* AppleService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppleService.swift; sourceTree = "<group>"; };
 		7AC842379140FEB68899B60A /* Pods_WhatToDo_WhatToDoUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_WhatToDo_WhatToDoUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		840DDD7E0053ADFCCE2F3A6C /* Pods-WhatToDoTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WhatToDoTests.release.xcconfig"; path = "Target Support Files/Pods-WhatToDoTests/Pods-WhatToDoTests.release.xcconfig"; sourceTree = "<group>"; };
 		88FAAE78B74F1771E0640C25 /* Pods_WhatToDo.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_WhatToDo.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -200,6 +202,7 @@
 		6E2C57262A31B1B0005C8DAB /* Services */ = {
 			isa = PBXGroup;
 			children = (
+				6E2C573C2A31CF2E005C8DAB /* Login */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -249,6 +252,14 @@
 			children = (
 				6E2C57362A31BBB3005C8DAB /* LoginView.swift */,
 				6E2C573A2A31CCAD005C8DAB /* LoginHeaderView.swift */,
+			);
+			path = Login;
+			sourceTree = "<group>";
+		};
+		6E2C573C2A31CF2E005C8DAB /* Login */ = {
+			isa = PBXGroup;
+			children = (
+				6E2C573D2A31CF5D005C8DAB /* AppleService.swift */,
 			);
 			path = Login;
 			sourceTree = "<group>";
@@ -516,6 +527,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6E2C573E2A31CF5D005C8DAB /* AppleService.swift in Sources */,
 				6E2C56F92A31A979005C8DAB /* Persistence.swift in Sources */,
 				6E2C572B2A31B287005C8DAB /* CommonButton.swift in Sources */,
 				6E2C56F22A31A977005C8DAB /* ContentView.swift in Sources */,
