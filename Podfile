@@ -15,6 +15,7 @@ target 'WhatToDo' do
 
 	pod 'GoogleSignIn'
 
+	pod 'lottie-ios'
 
   target 'WhatToDoTests' do
     inherit! :search_paths

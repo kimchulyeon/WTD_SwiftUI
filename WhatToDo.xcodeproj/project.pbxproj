@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		229324C5F6ADB9EFC8329A98 /* Pods_WhatToDo_WhatToDoUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7AC842379140FEB68899B60A /* Pods_WhatToDo_WhatToDoUITests.framework */; };
+		6E1976882A32D14D00E3B817 /* WeatherView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E1976872A32D14D00E3B817 /* WeatherView.swift */; };
+		6E19768A2A32DBE300E3B817 /* LocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E1976892A32DBE300E3B817 /* LocationManager.swift */; };
 		6E2C56F02A31A977005C8DAB /* WhatToDoApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E2C56EF2A31A977005C8DAB /* WhatToDoApp.swift */; };
 		6E2C56F22A31A977005C8DAB /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E2C56F12A31A977005C8DAB /* ContentView.swift */; };
 		6E2C56F42A31A979005C8DAB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6E2C56F32A31A979005C8DAB /* Assets.xcassets */; };
@@ -57,6 +59,8 @@
 		1067E9B7DBD086930AC3EA97 /* Pods-WhatToDo-WhatToDoUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WhatToDo-WhatToDoUITests.release.xcconfig"; path = "Target Support Files/Pods-WhatToDo-WhatToDoUITests/Pods-WhatToDo-WhatToDoUITests.release.xcconfig"; sourceTree = "<group>"; };
 		2E858DDE606BA16E13969CD8 /* Pods-WhatToDoTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WhatToDoTests.debug.xcconfig"; path = "Target Support Files/Pods-WhatToDoTests/Pods-WhatToDoTests.debug.xcconfig"; sourceTree = "<group>"; };
 		4A21259FD74F9F41578592C0 /* Pods_WhatToDoTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_WhatToDoTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		6E1976872A32D14D00E3B817 /* WeatherView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = WeatherView.swift; path = WhatToDo/Services/WeatherView.swift; sourceTree = SOURCE_ROOT; };
+		6E1976892A32DBE300E3B817 /* LocationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationManager.swift; sourceTree = "<group>"; };
 		6E2C56EC2A31A977005C8DAB /* WhatToDo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WhatToDo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		6E2C56EF2A31A977005C8DAB /* WhatToDoApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhatToDoApp.swift; sourceTree = "<group>"; };
 		6E2C56F12A31A977005C8DAB /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -122,6 +126,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		6E1976862A32D14400E3B817 /* Weather */ = {
+			isa = PBXGroup;
+			children = (
+				6E1976872A32D14D00E3B817 /* WeatherView.swift */,
+			);
+			path = Weather;
+			sourceTree = "<group>";
+		};
 		6E2C56E32A31A977005C8DAB = {
 			isa = PBXGroup;
 			children = (
@@ -196,6 +208,7 @@
 		6E2C57242A31B1A5005C8DAB /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				6E1976862A32D14400E3B817 /* Weather */,
 				6E2C57332A31BB9A005C8DAB /* Login */,
 				6E2C57322A31BB96005C8DAB /* Home */,
 			);
@@ -250,6 +263,7 @@
 				6E2C57302A31BAC1005C8DAB /* Constants.swift */,
 				6E2C57442A32B812005C8DAB /* UserDefaultsUtil.swift */,
 				6E2C57462A32BBD8005C8DAB /* CommonUtil.swift */,
+				6E1976892A32DBE300E3B817 /* LocationManager.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -543,12 +557,14 @@
 				6E2C57422A32B026005C8DAB /* FirebaseAuthService.swift in Sources */,
 				6E2C573B2A31CCAD005C8DAB /* LoginHeaderView.swift in Sources */,
 				6E2C57372A31BBB3005C8DAB /* LoginView.swift in Sources */,
+				6E19768A2A32DBE300E3B817 /* LocationManager.swift in Sources */,
 				6E2C57402A32B020005C8DAB /* GoogleService.swift in Sources */,
 				6E2C56F02A31A977005C8DAB /* WhatToDoApp.swift in Sources */,
 				6E2C57312A31BAC1005C8DAB /* Constants.swift in Sources */,
 				6E2C57392A31CA7D005C8DAB /* AppleLoginButton.swift in Sources */,
 				6E2C57352A31BBA4005C8DAB /* HomeView.swift in Sources */,
 				6E2C57452A32B812005C8DAB /* UserDefaultsUtil.swift in Sources */,
+				6E1976882A32D14D00E3B817 /* WeatherView.swift in Sources */,
 				6E2C56FC2A31A979005C8DAB /* WhatToDo.xcdatamodeld in Sources */,
 				6E2C572E2A31B574005C8DAB /* Color+Ext.swift in Sources */,
 			);
@@ -717,6 +733,9 @@
 				INFOPLIST_FILE = WhatToDo/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = "왓투두";
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.lifestyle";
+				INFOPLIST_KEY_NSLocationAlwaysAndWhenInUseUsageDescription = "날씨 정보를 가져오기 위해 사용자의 위치를 필요로 합니다";
+				INFOPLIST_KEY_NSLocationAlwaysUsageDescription = "날씨 정보를 가져오기 위해 사용자의 위치를 필요로 합니다";
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "날씨 정보를 가져오기 위해 사용자의 위치를 필요로 합니다";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -724,7 +743,7 @@
 				INFOPLIST_KEY_UIStatusBarStyle = "";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
-				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -757,6 +776,9 @@
 				INFOPLIST_FILE = WhatToDo/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = "왓투두";
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.lifestyle";
+				INFOPLIST_KEY_NSLocationAlwaysAndWhenInUseUsageDescription = "날씨 정보를 가져오기 위해 사용자의 위치를 필요로 합니다";
+				INFOPLIST_KEY_NSLocationAlwaysUsageDescription = "날씨 정보를 가져오기 위해 사용자의 위치를 필요로 합니다";
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "날씨 정보를 가져오기 위해 사용자의 위치를 필요로 합니다";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -764,7 +786,7 @@
 				INFOPLIST_KEY_UIStatusBarStyle = "";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
-				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

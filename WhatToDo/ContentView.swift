@@ -11,10 +11,12 @@ struct ContentView: View {
     //MARK: - PROPERTY ==================
     @AppStorage(CommonConstant.name) var name: String?
     
+    @StateObject var locationManager = LocationManager()
+    
     //MARK: - BODY ==================
     var body: some View {
         if self.name != nil {
-            HomeView()
+            HomeView(locationManager: self.locationManager)
         } else {
             LoginView()
         }
