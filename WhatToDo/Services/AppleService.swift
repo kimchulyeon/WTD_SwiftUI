@@ -13,7 +13,7 @@ import FirebaseAuth
 
 class AppleService: NSObject, ASAuthorizationControllerDelegate {
     static let shared = AppleService()
-    
+
     var loginView: LoginView!
 
     private override init() { }
@@ -24,7 +24,7 @@ class AppleService: NSObject, ASAuthorizationControllerDelegate {
     // https://firebase.google.com/docs/auth/ios/apple?hl=ko&authuser=0&_gl=1*1hdqmt7*_ga*MTMxMTIxNjg5OC4xNjc4Njc5MTY5*_ga_CW55HF8NVT*MTY4NTUxNTY1NC43LjEuMTY4NTUxNzkwNy4wLjAuMA..
     func startSignInWithAppleFlow(view: LoginView) {
         self.loginView = view
-        
+
         let nonce = randomNonceString()
         currentNonce = nonce
         let appleIDProvider = ASAuthorizationAppleIDProvider()
@@ -46,8 +46,6 @@ class AppleService: NSObject, ASAuthorizationControllerDelegate {
 
         return hashString
     }
-
-
 
     // https://firebase.google.com/docs/auth/ios/apple?hl=ko&authuser=0&_gl=1*1hdqmt7*_ga*MTMxMTIxNjg5OC4xNjc4Njc5MTY5*_ga_CW55HF8NVT*MTY4NTUxNTY1NC43LjEuMTY4NTUxNzkwNy4wLjAuMA..
     private func randomNonceString(length: Int = 32) -> String {
@@ -71,7 +69,7 @@ class AppleService: NSObject, ASAuthorizationControllerDelegate {
         return String(nonce)
     }
 
-    // DELEGATE
+    // 로그인하면 실행되는 로직
     func authorizationController(controller: ASAuthorizationController, didCompleteWithAuthorization authorization: ASAuthorization) {
         if let appleIDCredential = authorization.credential as? ASAuthorizationAppleIDCredential {
             guard let nonce = currentNonce else {
@@ -85,39 +83,49 @@ class AppleService: NSObject, ASAuthorizationControllerDelegate {
                 print("Unable to serialize token string from data: \(appleIDToken.debugDescription)")
                 return
             }
-            
+
             let email = appleIDCredential.email ?? ""
-            
+
             var name = "홍길동"
             if let fullName = appleIDCredential.fullName {
                 let formatter = PersonNameComponentsFormatter()
                 name = formatter.string(from: fullName)
             }
-            
+
             // Initialize a Firebase credential, including the user's full name.
             let credential = OAuthProvider.appleCredential(withIDToken: idTokenString,
                                                            rawNonce: nonce,
                                                            fullName: appleIDCredential.fullName)
-            // Sign in with Firebase.
-//            Auth.auth().signIn(with: credential) { (authResult, error) in
-//                if let error = error {
-//                    // Error. If error.code == .MissingOrInvalidNonce, make sure
-//                    // you're sending the SHA256-hashed nonce as a hex string with
-//                    // your request to Apple.
-//                    print(error.localizedDescription)
-//                    return
-//                }
-//                // User is signed in to Firebase with Apple.
-//                // ...
-//            }
-//            self.loginView.connectToFirebase(name: name, email: email, provider: "apple", credential: credential)
+            // 파이어베이스 로그인
+            FirebaseAuthService.shared.loginToFirebase(credential: credential) { userUID, isNewUser, isError, docID  in
+                guard let userUID = userUID else { return }
+
+                if !isError {
+                    if !isNewUser {
+                        print("✅ 기존 유저")
+                        guard let docID = docID else { return }
+                        FirebaseDatabaseService.shared.getUserInfo(with: docID) { name, email, userUID, provider, docID in
+                            guard let name = name,
+                                  let email = email,
+                                  let userUID = userUID,
+                                  let provider = provider else { return }
+                            
+                            UserDefaultsUtil.shared.setAuthInfo(name, email, userUID, docID, provider)
+                        }
+                    } else {
+                        print("✅ 신규 유저")
+                        FirebaseDatabaseService.shared.saveUserInfo(name, email, userUID, "apple") { docID in
+                            UserDefaultsUtil.shared.setAuthInfo(name, email, userUID, docID, "apple") // docID 추가
+                        }
+                    }
+                }
+            }
         }
     }
 
     func authorizationController(controller: ASAuthorizationController, didCompleteWithError error: Error) {
-        // Handle error.
-        print("Sign in with Apple errored: \(error)")
-//        self.loginView.isShowErrorAlert.toggle()
+        print("❌ Sign in with Apple errored: \(error.localizedDescription)")
+        self.loginView.isShowErrorAlert.toggle()
     }
 
 }
