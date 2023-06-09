@@ -9,6 +9,7 @@ import SwiftUI
 
 struct HomeView: View {
     //MARK: - PROPERTY ==================
+    @Environment(\.colorScheme) var colorScheme
     @ObservedObject var locationManager: LocationManager
     
     //MARK: - BODY ==================
@@ -18,40 +19,41 @@ struct HomeView: View {
             NavigationView {
                 WeatherView(locationManager: self.locationManager)
             }//{NavigationView}
-                .tabItem {
-                    VStack {
-                        Image(systemName: "sun.max")
-                        Text("날씨")
-                    }//{VStack}
-                }//{tabItem}
+            .tabItem {
+                VStack {
+                    Image(systemName: "sun.max")
+                    Text("날씨")
+                }//{VStack}
+            }//{tabItem}
             
             //MARK: - 2 ==================
             Text("hello")
-                .tabItem {
-                    VStack {
-                        Image(systemName: "film.stack")
-                        Text("영화")
-                    }//{VStack}
-                }//{tabItem}
+            .tabItem {
+                VStack {
+                    Image(systemName: "film.stack")
+                    Text("영화")
+                }//{VStack}
+            }//{tabItem}
             
             //MARK: - 3 ==================
             Text("hello")
-                .tabItem {
-                    VStack {
-                        Image(systemName: "map")
-                        Text("내 주변")
-                    }//{VStack}
+            .tabItem {
+                VStack {
+                    Image(systemName: "map")
+                    Text("내 주변")
+                }//{VStack}
             }//{tabItem}
 
             //MARK: - 4 ==================
             Text("hello")
-                .tabItem {
-                    VStack {
-                        Image(systemName: "person.crop.circle")
-                        Text("프로필")
-                    }//{VStack}
-                }//{tabItem}
+            .tabItem {
+                VStack {
+                    Image(systemName: "person.crop.circle")
+                    Text("프로필")
+                }//{VStack}
+            }//{tabItem}
         }//{TabView}
+        .tint(Color.MyColor.primary)
         .onAppear(perform: {
             CommonUtil.shared.configureNavigationBar()
             CommonUtil.shared.configureTabBar()

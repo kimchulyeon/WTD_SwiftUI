@@ -29,6 +29,9 @@ class CommonUtil {
     func configureTabBar() {
         let tabBarAppearance = UITabBarAppearance()
         tabBarAppearance.configureWithDefaultBackground()
+        tabBarAppearance.shadowColor = .clear
+        tabBarAppearance.shadowImage = UIImage()
         UITabBar.appearance().scrollEdgeAppearance = tabBarAppearance
+        UITabBar.appearance().standardAppearance = tabBarAppearance
     }
 }
