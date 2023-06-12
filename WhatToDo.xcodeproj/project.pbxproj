@@ -132,6 +132,20 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		37D0419C2A33F32D00D53423 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		37D0419D2A33F33200D53423 /* Apis */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Apis;
+			sourceTree = "<group>";
+		};
 		6E1976862A32D14400E3B817 /* Weather */ = {
 			isa = PBXGroup;
 			children = (
@@ -165,12 +179,12 @@
 		6E2C56EE2A31A977005C8DAB /* WhatToDo */ = {
 			isa = PBXGroup;
 			children = (
+				37D0419D2A33F33200D53423 /* Apis */,
+				37D0419C2A33F32D00D53423 /* Models */,
 				6E2C572F2A31BAB9005C8DAB /* Utils */,
 				6E2C572C2A31B566005C8DAB /* Extensions */,
 				6E2C57292A31B271005C8DAB /* SubViews */,
-				6E2C57272A31B1B8005C8DAB /* Apis */,
 				6E2C57262A31B1B0005C8DAB /* Services */,
-				6E2C57252A31B1AD005C8DAB /* Models */,
 				6E2C57242A31B1A5005C8DAB /* Views */,
 				6E2C57212A31ADD8005C8DAB /* WhatToDo.entitlements */,
 				6E2C57202A31ACE1005C8DAB /* Info.plist */,
@@ -221,13 +235,6 @@
 			path = Views;
 			sourceTree = "<group>";
 		};
-		6E2C57252A31B1AD005C8DAB /* Models */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Models;
-			sourceTree = "<group>";
-		};
 		6E2C57262A31B1B0005C8DAB /* Services */ = {
 			isa = PBXGroup;
 			children = (
@@ -237,13 +244,6 @@
 				6E2C57482A32BE93005C8DAB /* FirebaseDatabaseService.swift */,
 			);
 			path = Services;
-			sourceTree = "<group>";
-		};
-		6E2C57272A31B1B8005C8DAB /* Apis */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Apis;
 			sourceTree = "<group>";
 		};
 		6E2C57292A31B271005C8DAB /* SubViews */ = {

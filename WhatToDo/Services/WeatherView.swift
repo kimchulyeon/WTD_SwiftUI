@@ -12,11 +12,11 @@ import Combine
 struct WeatherView: View {
     //MARK: - PROPERTY ==================
     @State var cancellables = Set<AnyCancellable>()
-
-    @State var cityName: String = "seoul"
+    @State var cityName: String = ""
     @State var temperature: String = ""
     @State var weatherImage: UIImage = UIImage(named: "haze")!
-    @State var weather: Weather?
+	@State var weather: Weather?
+	@State var isShowAlert: Bool = false
 
     @ObservedObject var locationManager: LocationManager
 
@@ -27,16 +27,13 @@ struct WeatherView: View {
         ScrollView(.vertical, showsIndicators: false) {
             if self.weather == nil {
                 LottieView()
-                    .scaleEffect(0.4)
+                    .scaleEffect(0.2)
             } else {
                 VStack(alignment: .center, spacing: 8) {
-                    Text(self.cityName.uppercased())
-                        .font(.title2)
-
                     Image(uiImage: self.weatherImage)
                         .resizable()
                         .scaledToFit()
-                        .frame(width: 250, height: 250)
+                        .frame(width: 100, height: 100)
 
                     HStack(alignment: .center) {
                         VStack(alignment: .center) {
@@ -73,24 +70,43 @@ struct WeatherView: View {
         .toolbar {
             ToolbarItem(placement: .navigationBarTrailing) {
                 Button {
-                    // 사용자 위치
+					self.isShowAlert.toggle()
                 } label: {
                     Image(systemName: "paperplane.fill")
                         .tint(Color.MyColor.primary)
                 }//{Button}
             }//{ToolbarItem}
+			ToolbarItem(placement: .navigationBarLeading) {
+				HStack {
+					Image(systemName: "mappin.and.ellipse")
+						.foregroundColor(Color.MyColor.primary)
+					Text(self.cityName)
+						.foregroundColor(Color.MyColor.primary)
+				}//{HStack}
+			}//{ToolbarItem}
         }//{toolbar}
+		.alert("위치를 업데이트하시겠습니까?", isPresented: self.$isShowAlert, actions: {
+			Button("OK", role: .destructive) {
+				self.locationManager.requestAgain()
+			}//{Button}
+		})//{alert}
         .onAppear {
-            locationManager.currentLocationDidSet
+			self.locationManager.$currentLocation
                 .compactMap { $0 }
                 .sink { location in
                     Task {
                         do {
+							if let cityName = await self.locationManager.getCityName(location: location) {
+								self.cityName = cityName
+							}
+							
                             guard let location = self.locationManager.currentLocation else {
                                 print("❌ NO LOCATION")
                                 return
                             }
                             let weather = try await self.weatherService.weather(for: location)
+							print("🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀")
+							print(weather)
 
                             self.weather = weather
                             self.temperature = self.weather?.currentWeather.temperature.description ?? "-"
