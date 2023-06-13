@@ -16,10 +16,10 @@ class CommonUtil {
     /// 네비게이션 바 투명
     func configureNavigationBar() {
         let navigationBarAppearance = UINavigationBarAppearance()
-        navigationBarAppearance.configureWithTransparentBackground()
+        navigationBarAppearance.configureWithOpaqueBackground()
         navigationBarAppearance.shadowColor = .clear
         navigationBarAppearance.shadowImage = UIImage()
-        navigationBarAppearance.backgroundColor = .clear
+        navigationBarAppearance.backgroundColor = UIColor(white: 1, alpha: 0.98)
         UINavigationBar.appearance().scrollEdgeAppearance = navigationBarAppearance
         UINavigationBar.appearance().compactAppearance = navigationBarAppearance
         UINavigationBar.appearance().standardAppearance = navigationBarAppearance

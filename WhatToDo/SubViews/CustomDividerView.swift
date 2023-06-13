@@ -11,6 +11,7 @@ struct CustomDividerView: View {
     var body: some View {
         Capsule()
             .fill(Color.MyColor.primary)
+            .opacity(0.3)
             .frame(height: 2, alignment: .center)
             .frame(maxWidth: .infinity)
             .padding(.horizontal, 10)

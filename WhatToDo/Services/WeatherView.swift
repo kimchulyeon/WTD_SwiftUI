@@ -13,10 +13,7 @@ import CoreLocation
 struct WeatherView: View {
     //MARK: - PROPERTY ==================
 	@State var isShowAlert: Bool = false
-
     @ObservedObject var viewModel: WeatherViewModel
-
-    let weatherService = WeatherService.shared
 
     //MARK: - BODY ==================
     var body: some View {
@@ -26,41 +23,24 @@ struct WeatherView: View {
                     .scaleEffect(0.2)
             } else {
                 VStack(alignment: .center, spacing: 8) {
-                    Image(uiImage: self.viewModel.weatherImage)
-                        .resizable()
-                        .scaledToFit()
-                        .frame(width: 100, height: 100)
-
-                    HStack(alignment: .center) {
-                        VStack(alignment: .center) {
-                            Text("최저온도")
-                                .font(.callout)
-                                .foregroundColor(Color.MyColor.darkGray)
-                            CustomDividerView()
-                            Text(self.viewModel.lowTemperature)
-                                .font(.title3)
-                        }//{VStack}
-                        Spacer()
-                        VStack(alignment: .center) {
-                            Text("현재온도")
-                                .font(.callout)
-                                .foregroundColor(Color.MyColor.darkGray)
-                            CustomDividerView()
-                            Text(self.viewModel.currentTemperature)
-                                .font(.title3)
-                        }//{VStack}
-                        Spacer()
-                        VStack(alignment: .center) {
-                            Text("최고온도")
-                                .font(.callout)
-                                .foregroundColor(Color.MyColor.darkGray)
-                            CustomDividerView()
-                            Text(self.viewModel.highTemperature)
-                                .font(.title3)
-                        }//{VStack}
-                    }//{HStack}
-                    .padding(.horizontal, 45)
+                    WeatherHeaderView(cityName: self.viewModel.cityName, date: self.viewModel.currentDate)
+                    TodayWeatherView(weatherImage: self.viewModel.weatherImage,
+                                     temperature: self.viewModel.currentTemperature,
+                                     description: self.viewModel.description
+                    )
+                    ExtraWeatherInfoView(rainAmount: self.viewModel.rainAmount,
+                                         rainChance: self.viewModel.rainChance,
+                                         snowAmount: self.viewModel.snowAmount,
+                                         windSpeed: self.viewModel.windSpeed)
+                    CustomDividerView()
+                        .padding(.vertical, 20)
+                    
+                    if let weatherHourly = self.viewModel.weatherHourly {
+                        HourWeatherView(hourWeather: weatherHourly)
+                    }
+                    
                 }//{VStack}
+                .padding(.horizontal, 15)
             }
         }//{ScrollView}
         .toolbar {
@@ -68,18 +48,10 @@ struct WeatherView: View {
                 Button {
 					self.isShowAlert.toggle()
                 } label: {
-                    Image(systemName: "paperplane.fill")
+                    Image(systemName: "paperplane")
                         .tint(Color.MyColor.primary)
                 }//{Button}
             }//{ToolbarItem}
-			ToolbarItem(placement: .navigationBarLeading) {
-				HStack {
-					Image(systemName: "mappin.and.ellipse")
-						.foregroundColor(Color.MyColor.primary)
-                    Text(self.viewModel.cityName)
-						.foregroundColor(Color.MyColor.primary)
-				}//{HStack}
-			}//{ToolbarItem}
         }//{toolbar}
 		.alert("위치를 업데이트하시겠습니까?", isPresented: self.$isShowAlert, actions: {
 			Button("OK", role: .destructive) {
@@ -92,7 +64,7 @@ struct WeatherView: View {
 struct WeatherView_Previews: PreviewProvider {
     static var previews: some View {
         NavigationView {
-            WeatherView(viewModel: WeatherViewModel(locationManager: LocationManager()))
+            WeatherView(isShowAlert: false, viewModel: WeatherViewModel(locationManager: LocationManager()))
         }
     }
 }

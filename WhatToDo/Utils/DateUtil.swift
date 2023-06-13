@@ -14,4 +14,11 @@ class DateUtil: NSObject {
         formatter.dateFormat = "yyyy-MM-dd"
         return formatter.string(from: date)
     }
+    
+    static func formatDateForToday(date: Date) -> String {
+        let formatter = DateFormatter()
+        formatter.dateFormat = "MM월 dd일 EEEE"
+        formatter.locale = Locale(identifier: "ko_KR")
+        return formatter.string(from: date)
+    }
 }

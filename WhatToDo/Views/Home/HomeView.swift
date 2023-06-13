@@ -9,7 +9,6 @@ import SwiftUI
 
 struct HomeView: View {
     //MARK: - PROPERTY ==================
-    @Environment(\.colorScheme) var colorScheme
     @StateObject var locationManager: LocationManager
     
     //MARK: - BODY ==================

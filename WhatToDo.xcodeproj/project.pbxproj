@@ -36,6 +36,11 @@
 		6E2C57492A32BE93005C8DAB /* FirebaseDatabaseService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E2C57482A32BE93005C8DAB /* FirebaseDatabaseService.swift */; };
 		6E5E07D62A3824B0001116F2 /* DateUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E5E07D52A3824B0001116F2 /* DateUtil.swift */; };
 		6E5E07D92A3829CD001116F2 /* WeatherViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E5E07D82A3829CD001116F2 /* WeatherViewModel.swift */; };
+		6E5E07DC2A383C6D001116F2 /* TodayWeatherView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E5E07DB2A383C6D001116F2 /* TodayWeatherView.swift */; };
+		6E9059E42A3841B200C94B86 /* WeatherHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E9059E32A3841B200C94B86 /* WeatherHeaderView.swift */; };
+		6E9059E62A38486800C94B86 /* ExtraWeatherInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E9059E52A38486800C94B86 /* ExtraWeatherInfoView.swift */; };
+		6E9059E82A385EDA00C94B86 /* HourWeatherView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E9059E72A385EDA00C94B86 /* HourWeatherView.swift */; };
+		6E9059EA2A38635500C94B86 /* HourWeatherItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E9059E92A38635500C94B86 /* HourWeatherItemView.swift */; };
 		6EA4CD1F2A330BFC00D40DC9 /* LottieView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EA4CD1E2A330BFC00D40DC9 /* LottieView.swift */; };
 		6EA4CD232A330E0F00D40DC9 /* windAnimation.json in Resources */ = {isa = PBXBuildFile; fileRef = 6EA4CD222A330E0F00D40DC9 /* windAnimation.json */; };
 		6EA4CD272A331AFD00D40DC9 /* CustomDividerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EA4CD262A331AFD00D40DC9 /* CustomDividerView.swift */; };
@@ -97,6 +102,11 @@
 		6E2C57482A32BE93005C8DAB /* FirebaseDatabaseService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseDatabaseService.swift; sourceTree = "<group>"; };
 		6E5E07D52A3824B0001116F2 /* DateUtil.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateUtil.swift; sourceTree = "<group>"; };
 		6E5E07D82A3829CD001116F2 /* WeatherViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherViewModel.swift; sourceTree = "<group>"; };
+		6E5E07DB2A383C6D001116F2 /* TodayWeatherView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodayWeatherView.swift; sourceTree = "<group>"; };
+		6E9059E32A3841B200C94B86 /* WeatherHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherHeaderView.swift; sourceTree = "<group>"; };
+		6E9059E52A38486800C94B86 /* ExtraWeatherInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtraWeatherInfoView.swift; sourceTree = "<group>"; };
+		6E9059E72A385EDA00C94B86 /* HourWeatherView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HourWeatherView.swift; sourceTree = "<group>"; };
+		6E9059E92A38635500C94B86 /* HourWeatherItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HourWeatherItemView.swift; sourceTree = "<group>"; };
 		6EA4CD1E2A330BFC00D40DC9 /* LottieView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LottieView.swift; sourceTree = "<group>"; };
 		6EA4CD222A330E0F00D40DC9 /* windAnimation.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = windAnimation.json; sourceTree = "<group>"; };
 		6EA4CD262A331AFD00D40DC9 /* CustomDividerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomDividerView.swift; sourceTree = "<group>"; };
@@ -254,6 +264,7 @@
 		6E2C57292A31B271005C8DAB /* SubViews */ = {
 			isa = PBXGroup;
 			children = (
+				6E5E07DA2A383C5B001116F2 /* weather */,
 				6E2C572A2A31B287005C8DAB /* CommonButton.swift */,
 				6E2C57382A31CA7D005C8DAB /* AppleLoginButton.swift */,
 				6EA4CD1E2A330BFC00D40DC9 /* LottieView.swift */,
@@ -306,6 +317,18 @@
 				6E5E07D82A3829CD001116F2 /* WeatherViewModel.swift */,
 			);
 			path = viewModel;
+			sourceTree = "<group>";
+		};
+		6E5E07DA2A383C5B001116F2 /* weather */ = {
+			isa = PBXGroup;
+			children = (
+				6E5E07DB2A383C6D001116F2 /* TodayWeatherView.swift */,
+				6E9059E32A3841B200C94B86 /* WeatherHeaderView.swift */,
+				6E9059E52A38486800C94B86 /* ExtraWeatherInfoView.swift */,
+				6E9059E72A385EDA00C94B86 /* HourWeatherView.swift */,
+				6E9059E92A38635500C94B86 /* HourWeatherItemView.swift */,
+			);
+			path = weather;
 			sourceTree = "<group>";
 		};
 		6EA4CD1B2A3307CD00D40DC9 /* lottie */ = {
@@ -580,14 +603,19 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6E9059EA2A38635500C94B86 /* HourWeatherItemView.swift in Sources */,
 				6E2C573E2A31CF5D005C8DAB /* AppleService.swift in Sources */,
+				6E9059E42A3841B200C94B86 /* WeatherHeaderView.swift in Sources */,
 				6E5E07D62A3824B0001116F2 /* DateUtil.swift in Sources */,
 				6E2C56F92A31A979005C8DAB /* Persistence.swift in Sources */,
 				6E2C57492A32BE93005C8DAB /* FirebaseDatabaseService.swift in Sources */,
 				6EA4CD272A331AFD00D40DC9 /* CustomDividerView.swift in Sources */,
+				6E9059E62A38486800C94B86 /* ExtraWeatherInfoView.swift in Sources */,
+				6E5E07DC2A383C6D001116F2 /* TodayWeatherView.swift in Sources */,
 				6E2C57472A32BBD8005C8DAB /* CommonUtil.swift in Sources */,
 				6E2C572B2A31B287005C8DAB /* CommonButton.swift in Sources */,
 				6E2C56F22A31A977005C8DAB /* ContentView.swift in Sources */,
+				6E9059E82A385EDA00C94B86 /* HourWeatherView.swift in Sources */,
 				6E2C57422A32B026005C8DAB /* FirebaseAuthService.swift in Sources */,
 				6EA4CD1F2A330BFC00D40DC9 /* LottieView.swift in Sources */,
 				6E2C573B2A31CCAD005C8DAB /* LoginHeaderView.swift in Sources */,
@@ -779,6 +807,7 @@
 				INFOPLIST_KEY_UIStatusBarStyle = "";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
+				INFOPLIST_KEY_UIUserInterfaceStyle = Light;
 				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -822,6 +851,7 @@
 				INFOPLIST_KEY_UIStatusBarStyle = "";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
+				INFOPLIST_KEY_UIUserInterfaceStyle = Light;
 				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
