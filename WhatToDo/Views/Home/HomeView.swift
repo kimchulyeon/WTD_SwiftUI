@@ -10,14 +10,14 @@ import SwiftUI
 struct HomeView: View {
     //MARK: - PROPERTY ==================
     @Environment(\.colorScheme) var colorScheme
-    @ObservedObject var locationManager: LocationManager
+    @StateObject var locationManager: LocationManager
     
     //MARK: - BODY ==================
     var body: some View {
         TabView {
             //MARK: - 날씨 ==================
             NavigationView {
-                WeatherView(locationManager: self.locationManager)
+                WeatherView(viewModel: WeatherViewModel(locationManager: self.locationManager))
             }//{NavigationView}
             .tabItem {
                 VStack {
