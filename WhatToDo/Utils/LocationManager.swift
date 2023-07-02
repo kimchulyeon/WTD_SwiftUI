@@ -45,7 +45,7 @@ class LocationManager: NSObject, ObservableObject {
 	}
 }
 
-//MARK: - EXTENSION ==================
+//MARK: - DELEGATE ==================
 extension LocationManager: CLLocationManagerDelegate {
 	func locationManagerDidChangeAuthorization(_ manager: CLLocationManager) {
 		switch manager.authorizationStatus {
@@ -96,18 +96,20 @@ extension LocationManager: CLLocationManagerDelegate {
 	}
 }
 
+//MARK: - EXTENSION ==================
 extension LocationManager {
 	/// 툴바 종이비행기 클릭 사용자 위치 업데이트 (denied일 경우 설정 페이지 이동)
 	func requestAgain() {
 		switch self.authorizationStatus {
 		case .notDetermined, .restricted, .denied:
+            // 앱 설정 페이지로 이동
 			guard let url = URL(string: UIApplication.openSettingsURLString) else { return }
 
 			if UIApplication.shared.canOpenURL(url) {
 				UIApplication.shared.open(url)
 			}
 		case .authorizedAlways, .authorizedWhenInUse:
-			print("위치 권한 허용된 상태::::::::::::")
+			// 위치 업데이트
 			self.locationManager.startUpdatingLocation()
 			break
 		default:

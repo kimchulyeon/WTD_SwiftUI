@@ -9,19 +9,18 @@ import SwiftUI
 
 struct HomeView: View {
     //MARK: - PROPERTY ==================
-    @Environment(\.colorScheme) var colorScheme
-    @ObservedObject var locationManager: LocationManager
+    @StateObject var locationManager: LocationManager
     
     //MARK: - BODY ==================
     var body: some View {
         TabView {
             //MARK: - 날씨 ==================
             NavigationView {
-                WeatherView(locationManager: self.locationManager)
+                WeatherView(viewModel: WeatherViewModel(locationManager: self.locationManager))
             }//{NavigationView}
             .tabItem {
                 VStack {
-                    Image(systemName: "sun.max")
+                    Image(systemName: "sun.max.circle")
                     Text("날씨")
                 }//{VStack}
             }//{tabItem}
@@ -30,7 +29,7 @@ struct HomeView: View {
             Text("hello")
             .tabItem {
                 VStack {
-                    Image(systemName: "film.stack")
+                    Image(systemName: "film.circle")
                     Text("영화")
                 }//{VStack}
             }//{tabItem}
@@ -39,7 +38,7 @@ struct HomeView: View {
             Text("hello")
             .tabItem {
                 VStack {
-                    Image(systemName: "map")
+                    Image(systemName: "map.circle")
                     Text("내 주변")
                 }//{VStack}
             }//{tabItem}
@@ -48,7 +47,7 @@ struct HomeView: View {
             Text("hello")
             .tabItem {
                 VStack {
-                    Image(systemName: "person.crop.circle")
+                    Image(systemName: "person.circle")
                     Text("프로필")
                 }//{VStack}
             }//{tabItem}
